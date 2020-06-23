@@ -1,5 +1,6 @@
 ARG ARCH=
 FROM ${ARCH}ubuntu
+LABEL maintainer="dr2p@hotmail.com"
 
 RUN apt update \
 && DEBIAN_FRONTEND="noninteractive" apt install -y curl gfortran libreadline6-dev libx11-dev \ 
