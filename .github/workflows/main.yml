@@ -1,4 +1,4 @@
-name: build image with buildx
+name: Build R base Image
 
 on:
   push:
