@@ -16,8 +16,16 @@ jobs:
         version: latest
     - name: login no docker hub
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-    - name: build da imagem
+      - name: build da imagem amd64
       run: |
-        docker buildx build --push \
-          --tag dr2p/r-base:latest \
-          --platform linux/amd64,linux/arm64 .
+        docker buildx build --push --tag dr2p/r-base:amd64 --platform linux/amd64 .
+      - name: build da imagem arm64
+      run: |
+        docker buildx build --push --tag dr2p/r-base:arm64 --platform linux/arm64 .
+    - name: build do manifesto
+      run: |
+        docker manifest create dr2p/r-base:latest dr2p/r-base:amd64 dr2p/r-base:arm64
+    - name: push do manifesto
+      run: |
+        docker manifest push dr2p/r-base:latest
+      
