@@ -11,7 +11,7 @@ texlive-fonts-extra screen wget openjdk-8-jdk g++ build-essential\
 && cd /usr/local/src \
 && wget https://cran.rstudio.com/src/base/R-4/R-4.0.2.tar.gz \
 && tar zxvf R-4.0.2.tar.gz \
-&& cd R-4.0.1 \
+&& cd R-4.0.2 \
 && ./configure --enable-R-shlib --with-blas --with-lapack \
 && make \
 && make install \
