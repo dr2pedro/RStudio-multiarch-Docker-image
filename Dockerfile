@@ -4,7 +4,7 @@ ENV R_BASE_VERSION=4.0.2 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noi
 LABEL maintainer="dr2p@hotmail.com" \
       schema.license="MIT"
 
-RUN apt-get update && DEBIAN_FRONTEND="noninteractive" && apt-get install -y --no-install-recommends \]
+RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     ed \
     fonts-texgyre \
