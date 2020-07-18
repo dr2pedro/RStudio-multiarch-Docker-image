@@ -1,5 +1,5 @@
 FROM ubuntu:groovy AS base
-ENV R_BASE_VERSION=4.0.2 R_BASE_VERSION=4.0.2-1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+ENV R_BASE_VERSION=4.0.2 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 
 LABEL maintainer="dr2p@hotmail.com" \
       schema.license="MIT"
