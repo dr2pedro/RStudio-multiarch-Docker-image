@@ -19,7 +19,7 @@ texlive-fonts-extra screen wget openjdk-8-jdk g++ build-essential\
 && rm -rf /var/lib/apt/lists/* 
 
 FROM scratch
-COPY --from=base /usr/local /usr/local
+COPY --from=base /usr/bin /usr/bin
 
 ENTRYPOINT [ "R" ]
 
