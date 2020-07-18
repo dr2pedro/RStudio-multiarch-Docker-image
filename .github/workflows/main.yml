@@ -22,10 +22,4 @@ jobs:
     - name: build da imagem arm64
       run: |
         docker buildx build --push --tag dr2p/r-base:arm64 --platform linux/arm64 .
-    - name: build do manifesto
-      run: |
-        docker manifest create dr2p/r-base:latest dr2p/r-base:amd64 dr2p/r-base:arm64
-    - name: push do manifesto
-      run: |
-        docker manifest push dr2p/r-base:latest
       
