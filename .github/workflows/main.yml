@@ -2,7 +2,7 @@ name: Build R base Image
 
 on:
   push:
-    branches: [ master ]
+    branches: [ tiny ]
 
 jobs:
   build:
