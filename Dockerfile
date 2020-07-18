@@ -17,7 +17,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     r-base=${R_BASE_VERSION}-* \
     r-base-dev=${R_BASE_VERSION}-* \
     r-recommended=${R_BASE_VERSION}-* \
-			&& rm -rf /var/lib/apt/lists/*useradd docker \
+			&& rm -rf /var/lib/apt/lists/*\
+			&& useradd docker \
 			&& mkdir /home/docker \
 			&& chown docker:docker /home/docker \
 			&& addgroup docker staff \
