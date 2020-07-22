@@ -22,4 +22,7 @@ jobs:
     - name: build da imagem arm64
       run: |
         docker buildx build --push --tag dr2p/r-base:arm64 --platform linux/arm64 .
+    - name: build da imagem arm7
+      run: |
+        docker builx build --push --tag dr2p/r-base:linux/arm7 --platform linux/arm/v7 .
       
