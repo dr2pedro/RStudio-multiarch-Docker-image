@@ -1,4 +1,4 @@
-ARG version=4.0.2
+ARG version 4.0.2
 FROM ubuntu:groovy AS base
 ENV R_BASE_VERSION=${version} LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 DEBIAN_FRONTEND=nointeractive
 
