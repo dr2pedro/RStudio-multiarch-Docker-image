@@ -36,4 +36,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 			&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds \
   			&& rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT [ "R" ]
+ENTRYPOINT [ "/bin/bash" ]
