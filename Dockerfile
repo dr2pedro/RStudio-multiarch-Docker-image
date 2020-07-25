@@ -34,6 +34,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 			&& ln -s /usr/lib/R/site-library/littler/examples/testInstalled.r /usr/local/bin/testInstalled.r \
 			&& install.r docopt \
 			&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds \
-  			&& rm -rf /var/lib/apt/lists/*
+  			&& rm -rf /var/lib/apt/lists/* \
+			&& mkdir /usr/Rscripts
+
+WORKDIR /usr/Rscripts
 
 ENTRYPOINT ["R"]
