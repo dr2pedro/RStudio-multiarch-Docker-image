@@ -21,7 +21,7 @@ jobs:
         docker buildx build --push --tag dr2p/r-base:latest --platform linux/amd64,linux/arm64 .
     - name: test it!
       run: |
-        docker run -it dr2p/r-base -e write.table(as.character(getRversion()),'R-version.txt',sep='',row.names=FALSE,col.names=FALSE) 
+        docker run -it dr2p/r-base -e "write.table(as.character(getRversion()),'R-version.txt',sep='',row.names=FALSE,col.names=FALSE)"
     - name: Upload the current version that once will become old
       uses: actions/upload-artifact@v2
       with:
