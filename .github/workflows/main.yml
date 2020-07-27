@@ -22,7 +22,7 @@ jobs:
     - name: test it!
       uses: docker://dr2p/r-base
       with:
-        entrypoint: -e "write.table(as.character(getRversion()),'R-version.txt',sep='',row.names=FALSE,col.names=FALSE)"
+        args: -e "write.table(as.character(getRversion()),'R-version.txt',sep='',row.names=FALSE,col.names=FALSE)"
 
 
 
