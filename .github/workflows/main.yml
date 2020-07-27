@@ -23,6 +23,9 @@ jobs:
       uses: docker://dr2p/r-base
       with:
         args: -e "write.table(as.character(getRversion()),'R-version.txt',sep='',row.names=FALSE,col.names=FALSE)"
-
-
+    - name: Upload txt result for r-base
+    uses: actions/upload-artifact@v2
+    with:
+      name: current_version
+      path: R-version.txt
 
