@@ -39,4 +39,4 @@ filter_versions_numbers <- function(content){
 
 version = filter_versions_numbers(content)[[1]][1]
 
-write.table(version, 'R-version.txt', sep = '', row.names = FALSE, col.names = FALSE)
+write.table(version, 'R-version-available.txt', sep = '', row.names = FALSE, col.names = FALSE)
