@@ -16,16 +16,9 @@ jobs:
         version: latest
     - name: login no docker hub
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-    - name: build all images
-      run: |
-        docker buildx build --push --tag dr2p/r-base:latest --platform linux/amd64,linux/arm64 .
-    - name: test it!
+    - name: check update
       uses: docker://dr2p/r-base
       with:
-        args: -e "write.table(as.character(getRversion()),'R-version.txt',sep='',row.names=FALSE,col.names=FALSE)"
-    - name: Upload txt result for r-base
-      uses: actions/upload-artifact@v2
-      with:
-        name: current_version
-        path: R-version.txt
-
+        args: -e update.R
+    - name: get the artifact of the latest actions
+      run: curl -v -L -u repouser:$GITHUB_TOKEN -o current_version.zip "https://api.github.com/repos/dr2pedro/baseR-multiarch-Docker-image/actions/artifacts/${ARTIFACT_ID}/zip"

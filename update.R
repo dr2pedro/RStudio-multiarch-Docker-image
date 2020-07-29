@@ -10,6 +10,13 @@ if(!require(rvest)) {
 if(!require(stringr)) {
   install.packages("stringr")
 }
+if(!require(httr)) {
+  install.packages("httr")
+}
+if(!require(lubridate)) {
+  install.packages("lubridate")
+}
+
 
 url = 'https://packages.ubuntu.com/groovy/r-base'
 node = 'h1'
@@ -40,3 +47,41 @@ filter_versions_numbers <- function(content){
 version = filter_versions_numbers(content)[[1]][1]
 
 write.table(version, 'R-version-available.txt', sep = '', row.names = FALSE, col.names = FALSE)
+
+user = 'dr2pedro'
+repo = 'baseR-multiarch-Docker-image'
+token = 'e723218a077df223915494a6705578932ede0d29'
+
+
+set_artifactid_env <- function(user, repo, token) {
+
+  link = paste0('https://api.github.com/repos/', user, '/', repo, '/', 'actions/artifacts')
+    
+  content <- 
+    GET(link,
+        add_headers(Authorization= paste(user,token))
+    )  
+  
+  dates = NULL
+  id = NULL
+  
+  for (i in 1:length(content(content)$artifacts)) {
+    
+    dates[i] <- content(content)$artifacts[[i]]$created_at
+    id[i] <- content(content)$artifacts[[i]]$id
+    print(paste(as_date(dates), id))
+    
+  }
+  
+  dataset <- data.frame(cbind(id,dates))
+  
+  
+  dataset[order(dataset$dates, decreasing = TRUE),]
+  
+  return(dataset)
+  
+}
+
+dataset<- set_artifactid_env(user, repo, token)
+
+write.table(as.character(dataset$id[1]), 'ARTIFACT_ID.txt', row.names = FALSE, col.names = FALSE)
