@@ -1,20 +1,26 @@
 if(!require(dplyr)) {
   install.packages("dplyr")
+  require(dplyr)
 }
 if(!require(xml2)) {
   install.packages("xml2")
+  require(xml2)
 }
 if(!require(rvest)) {
   install.packages("rvest")
+  require(rvest)
 }
 if(!require(stringr)) {
   install.packages("stringr")
+  require(stringr)
 }
 if(!require(httr)) {
   install.packages("httr")
+  require(httr)
 }
 if(!require(lubridate)) {
   install.packages("lubridate")
+  require(lubridate)
 }
 
 
