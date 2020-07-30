@@ -22,6 +22,6 @@ jobs:
         options: -v ${pwd}/..:/usr/Rscripts
         args: -e "dir()"
     - name: set env
-      run: echo the artifact id is $ARTIFACT_ID
       env:
         ARTIFACT_ID: $(cat ARTIFACT_ID.txt)
+      run: set
