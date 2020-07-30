@@ -5,6 +5,9 @@ LABEL maintainer="dr2p@hotmail.com" \
       schema.license="MIT"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    libxml2-dev \
+    libcurl4-openssl-dev \
+    libssl-dev \
     ca-certificates \
     ed \
     fonts-texgyre \
