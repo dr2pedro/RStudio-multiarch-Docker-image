@@ -65,7 +65,7 @@ jobs:
         trim: true    
     
     - run: |
-       [ "x$s1" == "x$s2" ] && echo "They are the same"
+       [ "x$s1" != "x$s2" ] && echo "They are the different"
       env: 
        s1: ${{ steps.current_R_version.outputs.text }}
        s2: ${{ steps.available_R_version.outputs.text }}
