@@ -52,4 +52,4 @@ jobs:
       with:
         args: unzip -qq current_version.zip
     
-    - run: echo R-version.txt
+    - run: echo "$(<R-version.txt)"
