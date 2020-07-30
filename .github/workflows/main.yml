@@ -22,6 +22,7 @@ jobs:
         options: -v ${pwd}/..:/usr/Rscripts
         args: -e "dir()"
     - name: set env
+      env:
+        ARTIFACT_ID: $(echo $(<ARTIFACT_ID.txt))
       run: |
-        echo ::set-env name=ARTIFACT_ID::$(echo $(<ARTIFACT_ID.txt))
         set
