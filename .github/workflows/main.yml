@@ -34,6 +34,7 @@ jobs:
       id: artefato
       with:
         path: ARTIFACT_ID.txt
+        trim: true 
 
     
     - run: |
