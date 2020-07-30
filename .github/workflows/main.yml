@@ -47,4 +47,4 @@ jobs:
     - name: Decompress
       uses: TonyBogdanov/zip@1.0
       with:
-          args: unzip -qq ./current_version.zip -d ./R-version.txt
+        args: unzip -qq ./current_version.zip -d ./R-version.txt
