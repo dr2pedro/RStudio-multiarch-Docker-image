@@ -1,5 +1,5 @@
 FROM ubuntu:groovy AS base
-ENV R_BASE_VERSION=4.0.2 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 DEBIAN_FRONTEND=nointeractive
+ENV LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 DEBIAN_FRONTEND=nointeractive
 
 LABEL maintainer="dr2p@hotmail.com" \
       schema.license="MIT"
@@ -14,9 +14,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libopenblas0-pthread \
     littler \
     r-cran-littler \
-    r-base=${R_BASE_VERSION}-* \
-    r-base-dev=${R_BASE_VERSION}-* \
-    r-recommended=${R_BASE_VERSION}-* \
+    r-base \
+    r-base-dev \
+    r-recommended \
 			&& rm -rf /var/lib/apt/lists/*\
 			&& useradd docker \
 			&& mkdir /home/docker \
