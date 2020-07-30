@@ -65,7 +65,7 @@ jobs:
         trim: true    
     
     - run: |
-        if [["$R_CURRENT_VERSION" = "$R_AVAILABLE_VERSION"]] ; then 
+        if [[$R_CURRENT_VERSION = $R_AVAILABLE_VERSION]] ; then 
           echo "Same version" 
         fi
       env: 
