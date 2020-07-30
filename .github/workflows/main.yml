@@ -19,6 +19,6 @@ jobs:
     - name: check update
       uses: docker://dr2p/r-base
       with:
-        args: -e "source("update.R")"
-    - name: get the artifact of the latest actions
-      run: curl -v -L -u repouser:$GITHUB_TOKEN -o current_version.zip "https://api.github.com/repos/dr2pedro/baseR-multiarch-Docker-image/actions/artifacts/${ARTIFACT_ID}/zip"
+        options: -v ${pwd}/..:/usr/Rscripts
+        args: -e "dir()"
+   
