@@ -21,7 +21,6 @@ jobs:
       with:
         options: -v ${pwd}/..:/usr/Rscripts
         args: -e "dir()"
-        - run: echo -n -e "HELLO\n !\n World!" > text.txt
     - uses: pCYSl5EDgo/cat@master
       id: artefato
       with:
