@@ -42,4 +42,4 @@ jobs:
 
     - name: get the artifact of the latest actions
       run: |
-        curl -v -L -u repouser:${{ secrets.GITHUB_TOKEN }} -o current_version.zip "https://api.github.com/repos/dr2pedro/baseR-multiarch-Docker-image/actions/artifacts/$ARTIFACT_ID/zip"
+        curl -v -L -u repouser:${{ secrets.GITHUB_TOKEN }} -o current_version.zip "https://api.github.com/repos/dr2pedro/baseR-multiarch-Docker-image/actions/artifacts/${{ ARTIFACT_ID }}/zip"
