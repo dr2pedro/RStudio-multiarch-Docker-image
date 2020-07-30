@@ -38,6 +38,9 @@ jobs:
     
     - run: |
         echo $ARTIFACT_ID
-        curl -v -L -u repouser:${{ secrets.GITHUB_TOKEN }} -o current_version.zip "https://api.github.com/repos/dr2pedro/baseR-multiarch-Docker-image/actions/artifacts/'$ARTIFACT_ID'/zip"
+        echo $DOMAIN
+        echo $ENDPOINT
       env:
         ARTIFACT_ID: ${{ steps.artefato.outputs.text }}
+        DOMAIN: 'https://api.github.com/repos/dr2pedro/baseR-multiarch-Docker-image/actions/artifacts/'
+        ENDPOINT: '/zip'
