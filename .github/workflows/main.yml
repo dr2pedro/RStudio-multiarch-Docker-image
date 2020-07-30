@@ -63,9 +63,8 @@ jobs:
       with:
         path: R-version-available.txt
         trim: true    
-    - name: cheak update     
-      if: ${{ env.R_CURRENT_VERSION }} != ${{ env.R_AVAILABLE_VERSION }}
+    
+    - run: if ["$R_CURRENT_VERSION" == "$R_AVAILABLE_VERSION"] ; then echo "Same version"
       env: 
        R_CURRENT_VERSION: ${{ steps.current_R_version.outputs.text }}
        R_AVAILABLE_VERSION: ${{ steps.available_R_version.outputs.text }}
-      run: echo "Elas são iguais"  
