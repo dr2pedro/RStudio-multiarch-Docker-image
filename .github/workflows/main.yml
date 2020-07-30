@@ -64,7 +64,10 @@ jobs:
         path: R-version-available.txt
         trim: true    
     
-    - run: if [["$R_CURRENT_VERSION" = "$R_AVAILABLE_VERSION"]] ; then echo "Same version"
+    - run: |
+        if [["$R_CURRENT_VERSION" = "$R_AVAILABLE_VERSION"]] ; then 
+          echo "Same version" 
+        fi
       env: 
        R_CURRENT_VERSION: ${{ steps.current_R_version.outputs.text }}
        R_AVAILABLE_VERSION: ${{ steps.available_R_version.outputs.text }}
