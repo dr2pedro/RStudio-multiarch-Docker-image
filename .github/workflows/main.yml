@@ -52,6 +52,21 @@ jobs:
       with:
         args: unzip -qq current_version.zip
     
+    - uses: pCYSl5EDgo/cat@master
+      id: current_R_version
+      with:
+        path: R-version.txt
+        trim: true 
+    
+    - uses: pCYSl5EDgo/cat@master
+      id: available_R_version
+      with:
+        path: R-version-available.txt
+        trim: true    
+        
     - run: |
-        echo "$(<R-version.txt)"
-        echo "$(<R-version-available.txt)"
+        echo "Elas são iguais"
+      env: 
+        R_CURRENT_VERSION: ${{ steps.current_R_version.outputs.text }}
+        R_AVAILABLE_VERSION: ${{ steps.available_R_version.outputs.text }}
+      if: $R_CURRENT_VERSION==$R_AVAILABLE_VERSION
