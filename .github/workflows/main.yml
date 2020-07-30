@@ -21,12 +21,14 @@ jobs:
       with:
         options: -v ${pwd}/..:/usr/Rscripts
         args: -e "dir()"
-    - name: enable cat
+        - run: echo -n -e "HELLO\n !\n World!" > text.txt
+    - uses: pCYSl5EDgo/cat@master
       id: artefato
-      uses: pCYSl5EDgo/cat@master
       with:
         path: ARTIFACT_ID.txt
-      run: echo $ARTIFACT_ID
+
+    - run: echo $ARTIFACT_ID
       env:
         ARTIFACT_ID: ${{ steps.artefato.outputs.text }}
-      run: set
+    
+    -run: set
