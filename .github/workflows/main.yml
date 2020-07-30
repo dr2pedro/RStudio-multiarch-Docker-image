@@ -8,26 +8,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    
     - uses: actions/checkout@v2
+    
+    
     - name: instalando buildx
       id: buildx
       uses: crazy-max/ghaction-docker-buildx@v1
       with:
         version: latest
+    
+    
     - name: login no docker hub
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+    
+    
     - name: check update
       uses: docker://dr2p/r-base
       with:
         options: -v ${pwd}/..:/usr/Rscripts
         args: -e "dir()"
+    
+    
     - uses: pCYSl5EDgo/cat@master
       id: artefato
       with:
         path: ARTIFACT_ID.txt
 
+    
     - run: echo $ARTIFACT_ID
       env:
         ARTIFACT_ID: ${{ steps.artefato.outputs.text }}
-    
-    - run: set
