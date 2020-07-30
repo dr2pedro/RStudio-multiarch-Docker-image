@@ -23,6 +23,6 @@ jobs:
         args: -e "dir()"
     - name: set env
       env:
-        ARTIFACT_ID: $(echo $(<ARTIFACT_ID.txt))
+        ARTIFACT_ID: echo $(<ARTIFACT_ID.txt)
       run: |
         set
