@@ -69,4 +69,4 @@ jobs:
       env: 
         R_CURRENT_VERSION: ${{ steps.current_R_version.outputs.text }}
         R_AVAILABLE_VERSION: ${{ steps.available_R_version.outputs.text }}
-      if: $R_CURRENT_VERSION==$R_AVAILABLE_VERSION
+      if: R_CURRENT_VERSION==R_AVAILABLE_VERSION
