@@ -31,4 +31,4 @@ jobs:
       env:
         ARTIFACT_ID: ${{ steps.artefato.outputs.text }}
     
-    -run: set
+    - run: set
