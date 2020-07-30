@@ -23,5 +23,5 @@ jobs:
         args: -e "dir()"
     - name: set env
       run: |
-        echo "::set-env name=ARTIFACT_ID::$(cat ARTIFACT_ID.txt)"
+        echo ::set-env name=ARTIFACT_ID::$(cat ARTIFACT_ID.txt)
         set
