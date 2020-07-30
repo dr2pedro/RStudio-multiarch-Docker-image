@@ -21,4 +21,8 @@ jobs:
       with:
         options: -v ${pwd}/..:/usr/Rscripts
         args: -e "dir()"
-   
+    - name: Get artifact ID
+      id: vars
+      run: echo ::set-output name=ARTIFACT_ID::$(cat ARTIFACT_ID.txt)
+    - name: Test output
+      run: echo ${{ steps.vars.outputs.ARTIFACT_ID }}
