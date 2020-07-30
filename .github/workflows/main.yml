@@ -51,3 +51,5 @@ jobs:
     - uses: montudor/action-zip@v0.1.0
       with:
         args: unzip -qq current_version.zip
+    
+    - run: echo R-version.txt
