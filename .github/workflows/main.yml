@@ -65,11 +65,7 @@ jobs:
         trim: true    
     
     - run: |
-        if test "$$R_CURRENT_VERSION" = "$R_AVAILABLE_VERSION"; then
-          : variables are the same
-        else
-          : variables are different
-        fi
+       if [[ "$s1" == "$s2" ]] && echo "They are the same"
       env: 
-       R_CURRENT_VERSION: ${{ steps.current_R_version.outputs.text }}
-       R_AVAILABLE_VERSION: ${{ steps.available_R_version.outputs.text }}
+       s1: ${{ steps.current_R_version.outputs.text }}
+       s2: ${{ steps.available_R_version.outputs.text }}
