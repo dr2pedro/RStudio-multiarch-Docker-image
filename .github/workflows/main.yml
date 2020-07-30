@@ -27,7 +27,7 @@ jobs:
       uses: docker://dr2p/r-base
       with:
         options: -v ${pwd}/..:/usr/Rscripts
-        args: -e 'source("update.R")'
+        args: -e "source('update.R')"
     
     
     - uses: pCYSl5EDgo/cat@master
