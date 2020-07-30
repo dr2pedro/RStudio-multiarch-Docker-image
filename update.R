@@ -90,4 +90,4 @@ set_artifactid_env <- function(user, repo, token) {
 
 dataset<- set_artifactid_env(user, repo, token)
 
-write.table(dataset$id[1], 'ARTIFACT_ID.txt', row.names = FALSE, col.names = FALSE)
+write.table(as.numeric(dataset$id[1]), 'ARTIFACT_ID.txt', row.names = FALSE, col.names = FALSE)
