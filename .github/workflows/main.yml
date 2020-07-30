@@ -45,4 +45,4 @@ jobs:
         ARTIFACT_ID: ${{ steps.artefato.outputs.text }}
         DOMAIN: 'https://api.github.com/repos/dr2pedro/baseR-multiarch-Docker-image/actions/artifacts/'
         ENDPOINT: '/zip'
-        URL: ${{ env.DOMAIN }}
+        URL: ${{ DOMAIN }}
