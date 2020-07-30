@@ -50,7 +50,7 @@ write.table(version, 'R-version-available.txt', sep = '', row.names = FALSE, col
 
 user = 'dr2pedro'
 repo = 'baseR-multiarch-Docker-image'
-token = 'e723218a077df223915494a6705578932ede0d29'
+token = Sys.getenv("GITHUB_TOKEN")
 
 
 set_artifactid_env <- function(user, repo, token) {
