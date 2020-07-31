@@ -67,8 +67,8 @@ jobs:
     - run: |
        if [ "x$s1" != "x$s2" ] ; 
        then docker buildx build --push --tag dr2p/r-base:latest --platform linux/amd64,linux/arm64 . ; 
-       else echo "They are the same version" && curl -X POST -H 'Content-type: application/json' --data ${{ env.message }} ${{ secrets.SLACK_WEBHOOK }}; fi
+       else echo "They are the same version" && curl -X POST -H 'Content-type: application/json' --data ${{ secrets.SLACK_MESSAGE }} ${{ secrets.SLACK_WEBHOOK }}; fi
       env: 
        s1: ${{ steps.current_R_version.outputs.text }}
        s2: ${{ steps.available_R_version.outputs.text }}
-       message: '{"blocks": [{"type": "header","text": {"type": "plain_text","text": ":loudspeaker:  Update of R-Base image!!  :loud_sound:"}},{"type": "context","elements": [{"text": "Updated by Github actions","type": "mrkdwn"}]},{"type": "section","text": {"type": "mrkdwn","text": "The _Feature Observer_ detetect a new version of *R-base* in the https://hub.docker.com/r/dr2p/r-base/tags that was updated by _Github Actions_ since there is a new package for *Ubuntu groovy* of this software."},},{"type": "divider"}]}'
+       
