@@ -71,5 +71,5 @@ jobs:
       env: 
        s1: ${{ steps.current_R_version.outputs.text }}
        s2: ${{ steps.available_R_version.outputs.text }}
-       message: ${{ toJson(secrets.SLACK_MESSAGE) }}
+       message: ${{ secrets.SLACK_MESSAGE }}
        
