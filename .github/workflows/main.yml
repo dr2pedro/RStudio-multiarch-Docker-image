@@ -67,7 +67,7 @@ jobs:
     - run: |
        if [ "x$s1" != "x$s2" ] ; 
        then docker buildx build --push --tag dr2p/r-base:latest --platform linux/amd64,linux/arm64 . ; 
-       else echo "They are the same version" && curl -X POST -H 'Content-type: application/json' --data ${{ env.message }}${{ secrets.SLACK_WEBHOOK }}; fi
+       else echo "They are the same version" && curl -X POST -H 'Content-type: application/json' --data${{ env.message }} ${{ secrets.SLACK_WEBHOOK }}; fi
       env: 
        s1: ${{ steps.current_R_version.outputs.text }}
        s2: ${{ steps.available_R_version.outputs.text }}
