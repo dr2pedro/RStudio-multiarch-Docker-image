@@ -2,7 +2,7 @@ name: Build R base Image
 
 on:
   schedule:
-    - cron: '30 20 * * 4'
+    - cron: '*/5 * * *'
 
 jobs:
   build:
