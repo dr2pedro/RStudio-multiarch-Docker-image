@@ -2,7 +2,7 @@ name: Build R base Image
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '30 20 * * 4'
 
 jobs:
   build:
@@ -65,7 +65,7 @@ jobs:
         trim: true    
     
     - run: |
-       if [ "x$s1" != "x$s2" ] ; 
+       if [ "x$s1" == "x$s2" ] ; 
        then echo "They are the same version" ; 
        else docker buildx build --push --tag dr2p/r-base:latest --platform linux/amd64,linux/arm64 . && curl -X POST -H 'Content-type: application/json' --data ${{ toJson(secrets.SLACK_MESSAGE) }} ${{ secrets.SLACK_WEBHOOK }}; fi
       env: 
