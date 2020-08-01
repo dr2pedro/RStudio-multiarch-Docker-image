@@ -2,7 +2,7 @@ name: Build R base Image
 
 on:
   schedule:
-    - cron: '30 20 * * 4'
+    - cron: '*/5 * * * *'
       
 jobs:
   build:
@@ -71,4 +71,14 @@ jobs:
       env: 
        s1: ${{ steps.current_R_version.outputs.text }}
        s2: ${{ steps.available_R_version.outputs.text }}
-       
+    
+    - name: test it!
+      uses: docker://dr2p/r-base
+      with:
+        args: -e "write.table(as.character(getRversion()),'R-version.txt',sep='',row.names=FALSE,col.names=FALSE)"
+    
+    - name: Upload txt result for r-base
+      uses: actions/upload-artifact@v2
+      with:
+        name: current_version
+        path: R-version.txt
