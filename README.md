@@ -1,10 +1,8 @@
 # baseR-multiarch-Docker-image
   
-  In this repo i tried to make a Dockerfile for the statistical software R in the latest version available that could run in my main hardware architectures: arm64 (Raspberry pi 4) and amd64 (Ryzen and FX Vishera). I followed [this](https://www.docker.com/blog/multi-arch-build-and-images-the-simple-way/) instructions to configure the Github Actions for autobuild and for push with tag :latest in my Docker hub. 
-  Since in this Dockerfile i needed to compile the code for use in Raspberry pi 4, i coulded only work with two architectures due the SSD limit of 14Gb in the machine of Github Actions. Be aware of it in your personal use. 
+  In this repo i tried to make in a docker image the statistical software R. For that i'm using ubuntu groovy as base. Periodicaly the Github Action should run the update.R script to check updates in the packages installed, download the artifact of previous build that contains the version of R, compare it and in case of needs a new build, build it, pushes to Docker hub and notify in Slack that a new version exists.
 
 ![Build R base Image](https://github.com/dr2pedro/baseR-multiarch-Docker-image/workflows/Build%20R%20base%20Image/badge.svg?branch=master)
 ____________________________________
 
-  Neste repositório, tentei disponibilizar um Dockerfile para o software estatístico R na versão mais recente que pudesse ser executado nas minhas principais arquiteturas de hardware: arm64 (Raspberry pi 4) e amd64 (Ryzen e FX Vishera). Eu segui as instruções [aqui](https://www.docker.com/blog/multi-arch-build-and-images-the-simple-way/) para configurar as ações do Github para autobuild e para push com a tag :latest no meu Docker hub.
-  Como neste Dockerfile eu precisava compilar o código para uso no Raspberry pi 4, eu só pude trabalhar com duas arquiteturas devido ao limite de 14 GB de SSD na máquina do Github Actions. Esteja ciente disso em seu uso pessoal.
+  Neste repositório, tentei criar em uma imagem do docker o software estatístico R. Para isso, estou usando o ubuntu groovy como base. Periodicamente, o Github Actions deve executar o script update.R para verificar as atualizações nos pacotes instalados, faz o download do artefato da compilação anterior que contém a versão do R, compara e no caso de precisar de uma nova build, builda, envia para o Docker hub e notifica no Slack que existe uma nova versão.
