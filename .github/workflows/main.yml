@@ -1,8 +1,8 @@
 name: Build R base Image
 
 on:
-  schedule:
-    - cron: '*/6 * * * *'
+  push:
+    branches: [ master ]
       
 jobs:
   build:
