@@ -15,32 +15,33 @@ jobs:
     - uses: actions/checkout@v2
     
     
-    - name: instalando buildx
+    - name: Installing buildx
       id: buildx
       uses: crazy-max/ghaction-docker-buildx@v1
       with:
         version: latest
     
     
-    - name: login no docker hub
+    - name: Docker hub login
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
     
     
-    - name: check update
+    - name: Web-scraping ubuntu package site searching for update
       uses: docker://dr2p/r-base:update
       with:
         options: -v ${pwd}/..:/usr/Rscripts
         args: -e "source('update.R')"
     
     
-    - uses: pCYSl5EDgo/cat@master
+    - name: Setting downloader for Github artifacts
+      uses: pCYSl5EDgo/cat@master
       id: artefato
       with:
         path: ARTIFACT_ID.txt
         trim: true 
 
-    
-    - run: |
+    - name: Downloading the previously artifact
+      run: |
         echo $ARTIFACT_ID
         echo $DOMAIN
         echo $ENDPOINT
@@ -51,23 +52,27 @@ jobs:
         DOMAIN: 'https://api.github.com/repos/dr2pedro/baseR-multiarch-Docker-image/actions/artifacts/'
         ENDPOINT: '/zip' 
 
-    - uses: montudor/action-zip@v0.1.0
+    - name: Setting an unziper
+      uses: montudor/action-zip@v0.1.0
       with:
         args: unzip -qq current_version.zip
     
-    - uses: pCYSl5EDgo/cat@master
+    - name: Setting an uploader
+      uses: pCYSl5EDgo/cat@master
       id: current_R_version
       with:
         path: R-version.txt
         trim: true 
     
-    - uses: pCYSl5EDgo/cat@master
+    - name: Downloading web-scraping results
+      uses: pCYSl5EDgo/cat@master
       id: available_R_version
       with:
         path: R-version-available.txt
         trim: true    
     
-    - run: |
+    - name: Comparing versions and building(+push) in casse they are diferent
+      run: |
        if [ "x$s1" == "x$s2" ] ; 
        then echo "They are the same version" ; 
        else docker buildx build --push --tag dr2p/r-base:latest --platform linux/amd64,linux/arm64 . && curl -X POST -H 'Content-type: application/json' --data ${{ toJson(secrets.SLACK_MESSAGE) }} ${{ secrets.SLACK_WEBHOOK }}; fi
@@ -75,12 +80,12 @@ jobs:
        s1: ${{ steps.current_R_version.outputs.text }}
        s2: ${{ steps.available_R_version.outputs.text }}
     
-    - name: test it!
+    - name: Testing and making the next artifact
       uses: docker://dr2p/r-base
       with:
         args: -e "write.table(as.character(getRversion()),'R-version.txt',sep='',row.names=FALSE,col.names=FALSE)"
     
-    - name: Upload txt result for r-base
+    - name: Uploading the artifact
       uses: actions/upload-artifact@v2
       with:
         name: current_version
