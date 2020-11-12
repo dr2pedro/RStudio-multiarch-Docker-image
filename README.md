@@ -1,4 +1,4 @@
-# baseR-multiarch-Docker-image:update
+# baseR-multiarch-Docker-image
   
   This repo contains a Dockerfile of R, a statistical software/framework used for data scientists, build upon ubuntu groovy. Periodicaly the Github Action should run the update.R script to check updates in the packages installed, download the artifact of previous build that contains the version of R, compare it and in case of needs a new build, build it, pushes to Docker hub and notify in Slack that a new version exists.
 
