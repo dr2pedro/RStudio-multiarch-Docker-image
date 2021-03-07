@@ -39,4 +39,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 FROM base AS branch-1
 
-ENTRYPOINT ["R"]
+WORKDIR /usr/Rscripts
