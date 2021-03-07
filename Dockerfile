@@ -38,5 +38,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 			&& mkdir /usr/Rscripts
 
 FROM base AS branch-1
-
 WORKDIR /usr/Rscripts
+ENTRYPOINT ['R']
