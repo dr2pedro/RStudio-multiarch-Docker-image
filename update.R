@@ -24,7 +24,7 @@ if(!require(lubridate)) {
 }
 
 
-url = 'https://packages.ubuntu.com/groovy/r-base'
+url = 'https://packages.ubuntu.com/hirsute/r-base'
 node = 'h1'
 
 
