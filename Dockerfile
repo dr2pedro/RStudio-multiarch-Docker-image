@@ -1,4 +1,4 @@
-FROM ubuntu:hirsute AS base
+FROM ubuntu:groovy AS base
 ENV LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 DEBIAN_FRONTEND=nointeractive
 
 LABEL maintainer="dr2p@hotmail.com" \
